@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>图片飞入效果</title>
+  <style>
+    body {
+      background: #ccc; /* 灰色背景 */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .photo {
+      width: 150px;
+      height: 150px;
+      opacity: 0;
+      transform: translateY(100px) scale(0.8);
+      transition: all 0.6s ease-out;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .photo.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="photo"><img src="./photo/GnXmmkFbAAEWYhv.jpeg" /></div>
+  <div class="photo"><img src="https://via.placeholder.com/150" /></div>
+  <div class="photo"><img src="https://via.placeholder.com/150" /></div>
+  <div class="photo"><img src="https://via.placeholder.com/150" /></div>
+
+  <script>
+    const photos = document.querySelectorAll('.photo');
+    photos.forEach((photo, index) => {
+      setTimeout(() => {
+        photo.classList.add('show');
+      }, index * 300); // 每张图延迟300ms飞入
+    });
+  </script>
+</body>
+</html>
+
